@@ -5,7 +5,7 @@ import FourthPage from "./Pagination/FourthPage";
 import FifthPage from "./Pagination/FifthPage";
 import SixthPage from "./Pagination/SixthPage";
 import SevenPage from "./Pagination/SevenPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [currentPage, setCurrentpage] = useState(0);
@@ -38,17 +38,17 @@ function App() {
           <FifthPage onContinue={handleContinue} onGoBack={handleGoBack} />
         );
       case 5:
-        return (
-          <SixthPage onContinue={handleContinue} onGoBack={handleGoBack} />
-        );
+        setTimeout(() => {
+          setCurrentpage(6);
+        }, 1000);
+        return <SixthPage />;
       case 6:
-        return (
-          <SevenPage onContinue={handleContinue} onGoBack={handleGoBack} />
-        );
+        return <SevenPage />;
       default:
         return null;
     }
   };
+
   return <div className="h-screen">{renderPage()}</div>;
 }
 

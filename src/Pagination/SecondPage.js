@@ -1,10 +1,19 @@
 import React from "react";
 
-const SecondPage = ({ onContinue, onGoBack }) => {
+const SecondPage = ({ onContinue }) => {
   return (
-    <div className="max-w-xl mx-auto mt-4 flex flex-col h-full">
+    <div className="max-w-lg mx-auto mt-4 flex flex-col h-full">
+      <div className="flex items-center">
+        <button className="pb-1"> {"<"}&nbsp; </button>
+        <div className="relative w-full h-1 bg-gray-200 my-5">
+          <div
+            className="absolute top-[-2px] left-0 h-2 rounded-full border-4 border-green-500"
+            style={{ width: "40%" }}
+          ></div>
+        </div>
+      </div>
       <div className="text-center mb-8 ">
-        <h2 className="text-3xl font-bold mb-2">
+        <h2 className="text-2xl font-bold mb-2">
           Which are you most interested in?
         </h2>
         <p className="text-gray-600 text-sm mt-2">

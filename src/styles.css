@@ -2,3 +2,19 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+
+.pagination-circle-for-1st-page {
+    position: absolute;
+    top: -4px;
+    left: 14.28%; 
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid green; /* Add a border to create a circle with green color */
+}
+
+
+
+  
