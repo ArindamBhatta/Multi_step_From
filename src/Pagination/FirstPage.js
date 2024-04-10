@@ -9,9 +9,9 @@ const FirstPage = ({ onContinue, onGoBack }) => {
 
   return (
     <div className="max-w-lg mx-auto  flex flex-col h-full">
-      <div className="relative w-full h-1 bg-gray-200 my-5">
+      <div className="relative w-full h-0.5 bg-gray-200 my-5">
         <div
-          className="absolute top-[-2px] left-0 h-2 rounded-full border-4 border-green-500"
+          className="absolute top-[-1px] left-0  rounded-full  border-2 border-green-500"
           style={{ width: "20%" }}
         ></div>
       </div>

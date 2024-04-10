@@ -7,9 +7,9 @@ const ThirdPage = ({ onContinue, onGoBack }) => {
         <button className="pb-1" onClick={onGoBack}>
           {"<"}&nbsp;
         </button>
-        <div className="relative h-1 bg-gray-200 w-full">
+        <div className="relative h-0.5 bg-gray-200 w-full">
           <div
-            className="absolute top-[-2px] left-0 h-2 rounded-full border-4 border-green-500"
+            className="absolute top-[-1px] left-0  rounded-full border-2 border-green-500"
             style={{ width: "60%" }}
           ></div>
         </div>

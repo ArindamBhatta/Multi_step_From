@@ -14,9 +14,9 @@ const SecondPage = ({ onContinue, onGoBack }) => {
           {" "}
           {"<"}&nbsp;{" "}
         </button>
-        <div className="relative w-full h-1 bg-gray-200 my-5">
+        <div className="relative w-full h-0.5 bg-gray-200 my-5">
           <div
-            className="absolute top-[-2px] left-0 h-2 rounded-full border-4 border-green-500"
+            className="absolute top-[-1px] left-0  rounded-full border-2 border-green-500"
             style={{ width: "40%" }}
           ></div>
         </div>
