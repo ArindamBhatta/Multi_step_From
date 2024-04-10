@@ -40,9 +40,12 @@ function App() {
       case 5:
         setTimeout(() => {
           setCurrentpage(6);
-        }, 1000);
+        }, 1500);
         return <SixthPage />;
       case 6:
+        localStorage.removeItem("selectedOption");
+        localStorage.removeItem("2nd-page");
+        localStorage.removeItem("4th-page");
         return <SevenPage />;
       default:
         return null;

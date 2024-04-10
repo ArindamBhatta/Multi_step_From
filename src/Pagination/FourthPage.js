@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const ForthPage = ({ onContinue, onGoBack }) => {
+  const [selectOption, setSelectedOption] = useState(() => {
+    return parseInt(localStorage.getItem("4th-page")) || null;
+  });
+
+  const handleOptionClick = (int) => {
+    setSelectedOption(int);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("4th-page", selectOption);
+  }, [selectOption]);
+
   return (
     <div className="flex flex-col items-center h-full">
       <div className="flex items-center max-w-lg w-full mt-12">
@@ -27,18 +39,35 @@ const ForthPage = ({ onContinue, onGoBack }) => {
         </div>
 
         {/* 2nd part */}
-        <div className="flex items-center justify-center rounded-lg gap-2 ">
-          <div className="p-4 rounded-md border-2 flex flex-col items-center w-52 h-32 hover:border-yellow-500">
+        <div className="flex items-center justify-center rounded-lg gap-2">
+          <div
+            onClick={() => handleOptionClick(1)}
+            className={`p-4 rounded-md border-2 flex flex-col items-center w-52 h-32 cursor-pointer ${
+              selectOption === 1 ? "border-orange-300" : ""
+            } `}
+          >
             <p className="text-center w-full">5 × 1/2 = ?</p>
             <p className="text-gray-600 text-sm">Arithmetic</p>
             <p className="text-gray-600 text-xs">Introductory</p>
           </div>
-          <div className="p-4 rounded-md border-2 flex flex-col items-center w-52 h-32 hover:border-yellow-500">
+          {/*  */}
+          <div
+            onClick={() => handleOptionClick(2)}
+            className={`p-4 rounded-md border-2 flex flex-col items-center w-52 h-32 cursor-pointer ${
+              selectOption === 2 ? "border-orange-300" : ""
+            }`}
+          >
             <p className="text-center w-full">3x + 5 = 4</p>
             <p className="text-gray-600 text-sm">Basic Algebra</p>
             <p className="text-gray-600 text-xs text-center">Foundational</p>
           </div>
-          <div className="p-4 rounded-md border-2 flex flex-col items-center w-52 h-32 hover:border-yellow-500">
+          {/*  */}
+          <div
+            onClick={() => handleOptionClick(3)}
+            className={`p-4 rounded-md border-2 flex flex-col items-center w-52 h-32 cursor-pointer ${
+              selectOption === 3 ? "border-orange-300" : ""
+            }`}
+          >
             <pre className="text-center w-full">
               x = -b ± √(b<sup>2</sup> - 4ac)
               <hr /> 2a
@@ -46,17 +75,25 @@ const ForthPage = ({ onContinue, onGoBack }) => {
             <p className="text-gray-600 text-sm">Intermediate Algebra</p>
             <p className="text-gray-600 text-xs">Intermediate</p>
           </div>
-          <div className="p-4 rounded-md border-2 flex flex-col items-center w-52 h-32 hover:border-yellow-500">
+          {/*  */}
+          <div
+            onClick={() => handleOptionClick(4)}
+            className={`p-4 rounded-md border-2 flex flex-col items-center w-52 h-32 cursor-pointer ${
+              selectOption === 4 ? "border-orange-300" : ""
+            }`}
+          >
             <p className="text-center w-full">∫ x^2 dx = ?</p>
             <p className="text-gray-600 text-sm">Calculus</p>
             <p className="text-gray-600 text-xs">Advanced</p>
           </div>
         </div>
 
-        <div className="flex justify-center items-center mt-16">
+        <div className="flex justify-center items-center mt-16 rounded-lg cursor-pointer">
           <button
-            className="border-2 py-2 px-12 text-white bg-black  rounded-lg"
-            onClick={onContinue}
+            className={`border-2  py-2 px-12 text-white rounded-lg ${
+              selectOption !== null ? "bg-black" : "bg-gray-400"
+            }`}
+            onClick={selectOption !== null ? onContinue : null}
           >
             Continue
           </button>

@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const FirstPage = ({ onContinue, onGoBack }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(() => {
+    return parseInt(localStorage.getItem("selectedOption")) || null;
+  });
 
   const handleOptionClick = (index) => {
     setSelectedOption(index);
   };
+
+  useEffect(() => {
+    localStorage.setItem("selectedOption", selectedOption);
+  }, [selectedOption]);
 
   return (
     <div className="max-w-lg mx-auto  flex flex-col h-full">
@@ -23,8 +29,8 @@ const FirstPage = ({ onContinue, onGoBack }) => {
       </div>
       {/* 2nd part */}
       <div
-        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl ${
-          selectedOption === 1 ? "border-gray-500" : ""
+        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl cursor-pointer ${
+          selectedOption === 1 ? "border-orange-300" : ""
         }`}
         onClick={() => handleOptionClick(1)}
       >
@@ -37,8 +43,8 @@ const FirstPage = ({ onContinue, onGoBack }) => {
       </div>
       {/* profesonal */}
       <div
-        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl ${
-          selectedOption === 2 ? "border-gray-500" : ""
+        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl cursor-pointer ${
+          selectedOption === 2 ? "border-orange-300" : ""
         }`}
         onClick={() => handleOptionClick(2)}
       >
@@ -51,8 +57,8 @@ const FirstPage = ({ onContinue, onGoBack }) => {
       </div>
 
       <div
-        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl 
-        ${selectedOption === 3 ? "border-gray-500" : ""} `}
+        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl cursor-pointer 
+        ${selectedOption === 3 ? "border-orange-300" : ""} `}
         onClick={() => handleOptionClick(3)}
       >
         <img
@@ -64,8 +70,8 @@ const FirstPage = ({ onContinue, onGoBack }) => {
       </div>
       {/*  */}
       <div
-        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl ${
-          selectedOption === 4 ? "border-gray-500" : ""
+        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl cursor-pointer ${
+          selectedOption === 4 ? "border-orange-300" : ""
         }`}
         onClick={() => handleOptionClick(4)}
       >
@@ -78,8 +84,8 @@ const FirstPage = ({ onContinue, onGoBack }) => {
       </div>
       {/*  */}
       <div
-        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl ${
-          selectedOption === 5 ? "border-gray-500" : ""
+        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl cursor-pointer ${
+          selectedOption === 5 ? "border-orange-300" : ""
         } `}
         onClick={() => handleOptionClick(5)}
       >
@@ -92,8 +98,8 @@ const FirstPage = ({ onContinue, onGoBack }) => {
       </div>
 
       <div
-        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl ${
-          selectedOption === 6 ? "border-gray-500" : ""
+        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl cursor-pointer ${
+          selectedOption === 6 ? "border-orange-300" : ""
         }`}
         onClick={() => handleOptionClick(6)}
       >
@@ -104,10 +110,10 @@ const FirstPage = ({ onContinue, onGoBack }) => {
         />
         <p className="text-center ml-2">Other</p>
       </div>
-      <div className="flex justify-center items-center mt-4">
+      <div className="flex justify-center items-center mt-4 cursor-pointer">
         <button
           className={`border-2  py-2 px-12 text-white rounded-lg ${
-            selectedOption !== null ? "bg-black" : "bg-gray-200"
+            selectedOption !== null ? "bg-black" : "bg-gray-400"
           }`}
           onClick={selectedOption !== null ? onContinue : null}
         >

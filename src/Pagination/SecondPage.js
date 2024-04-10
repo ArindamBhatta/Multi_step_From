@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const SecondPage = ({ onContinue, onGoBack }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(() => {
+    return parseInt(localStorage.getItem("2nd-page")) || null;
+  });
 
   const handleOptionClick = (index) => {
     setSelectedOption(index);
   };
+
+  useEffect(() => {
+    localStorage.setItem("2nd-page", selectedOption);
+  }, [selectedOption]);
 
   return (
     <div className="max-w-lg mx-auto flex flex-col h-full">
@@ -32,11 +38,11 @@ const SecondPage = ({ onContinue, onGoBack }) => {
       </div>
 
       <div
-        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl ${
-          selectedOption === 1 ? "border-gray-500" : ""
+        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl cursor-pointer ${
+          selectedOption === 7 ? "border-orange-300" : ""
         }`}
         onClick={() => {
-          handleOptionClick(1);
+          handleOptionClick(7);
         }}
       >
         <img
@@ -51,11 +57,11 @@ const SecondPage = ({ onContinue, onGoBack }) => {
       </div>
 
       <div
-        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl ${
-          selectedOption === 2 ? "border-gray-500" : ""
+        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl cursor-pointer ${
+          selectedOption === 8 ? "border-orange-300" : ""
         }`}
         onClick={() => {
-          handleOptionClick(2);
+          handleOptionClick(8);
         }}
       >
         <img
@@ -70,10 +76,10 @@ const SecondPage = ({ onContinue, onGoBack }) => {
       </div>
 
       <div
-        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl ${
-          selectedOption === 3 ? "border-gray-500" : ""
+        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl cursor-pointer ${
+          selectedOption === 9 ? "border-orange-300" : ""
         }`}
-        onClick={() => handleOptionClick(3)}
+        onClick={() => handleOptionClick(9)}
       >
         <img
           src="https://img.freepik.com/free-vector/seamless-pattern-with-school-office-stationery_107791-9568.jpg?w=740"
@@ -84,10 +90,10 @@ const SecondPage = ({ onContinue, onGoBack }) => {
       </div>
 
       <div
-        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl ${
-          selectedOption === 4 ? "border-gray-500" : ""
+        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl cursor-pointer ${
+          selectedOption === 10 ? "border-orange-300" : ""
         }`}
-        onClick={() => handleOptionClick(4)}
+        onClick={() => handleOptionClick(10)}
       >
         <img
           src="https://img.freepik.com/free-vector/dart-hitting-center-target-3d-icon-arrow-hitting-aim-bullseye-3d-vector-illustration-white-background-goal-success-achievement-marketing-strategy-concept_74855-25962.jpg?w=740"
@@ -98,11 +104,11 @@ const SecondPage = ({ onContinue, onGoBack }) => {
       </div>
 
       <div
-        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl ${
-          selectedOption === 5 ? "border-gray-500" : ""
+        className={`flex items-center bg-white rounded-lg border-2 py-1 my-1 max-w-2xl cursor-pointer ${
+          selectedOption === 11 ? "border-orange-300" : ""
         }`}
         onClick={() => {
-          handleOptionClick(5);
+          handleOptionClick(11);
         }}
       >
         <img
@@ -113,10 +119,10 @@ const SecondPage = ({ onContinue, onGoBack }) => {
         <p className="text-center ml-2"> Something else </p>
       </div>
       {/* button */}
-      <div className="flex justify-center items-center mt-4 ">
+      <div className="flex justify-center items-center mt-4 cursor-pointer">
         <button
           className={`border-2  py-2 px-12 text-white rounded-lg ${
-            selectedOption !== null ? "bg-black" : "bg-gray-200"
+            selectedOption !== null ? "bg-black" : "bg-gray-400"
           }`}
           onClick={selectedOption !== null ? onContinue : null}
         >
